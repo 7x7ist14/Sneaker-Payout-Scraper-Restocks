@@ -9,6 +9,7 @@ restocks_url = main.restocks_url
 stockx_url = main.stockx_url
 hypeboost_url = main.hypeboost_product_url
 sneakit_url = main.sneakit_product_url
+goat_url = main.product_goat
 product_picture = main.sneakit_image
 product_title = main.product_title
 
@@ -18,7 +19,7 @@ if not TOKEN:
     raise ValueError("The Bot-Token was not included in the config.py file")
 
 if not CHANNEL_NAME:
-    raise ValueError("The Channel-name was not included in the config.py file")
+    raise ValueError("The Channel-Name was not included in the config.py file")
 
 if not COMMAND_PREFIX:
     raise ValueError("The Command-Prefix was not included in the config.py file")
@@ -52,6 +53,7 @@ async def on_message(message):
         sneakit_url_output = sneakit_url(SKU)
         product_picture_output = product_picture(SKU)
         product_title_output = product_title(SKU)
+        goat_url_output = goat_url(SKU)
 
         embed = discord.Embed(
           title=product_title_output,
@@ -75,7 +77,7 @@ async def on_message(message):
         )
         embed.add_field(
           name="Open Product on:",
-          value=f"[[StockX]]({stockx_url_output})      " f"[[Sneakit]]({sneakit_url_output})      " f"[[Restocks]]({restocks_url_output})      " f"[[Hypeboost]]({hypeboost_url_output})      ",
+          value=f"[[StockX]]({stockx_url_output})      " f"[[Sneakit]]({sneakit_url_output})      " f"[[Restocks]]({restocks_url_output})      " f"[[Hypeboost]]({hypeboost_url_output})      " f"[[GOAT]]({goat_url_output})      ",
           inline=False
         )
         embed.set_footer(
