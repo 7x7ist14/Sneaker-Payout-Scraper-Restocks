@@ -36,4 +36,9 @@ At the bottom of the discord message you can also find the StockX, Restocks, Sne
 # Return Message Example:
 The return message looks like this:
 
-![image](https://user-images.githubusercontent.com/103487648/224415176-96d7eb22-cd05-48f5-bb9a-65132deef512.png)
+
+![image](https://user-images.githubusercontent.com/103487648/224491259-c6f97f2b-49a3-4e82-b787-b355ad10670e.png)
+
+
+![image](https://user-images.githubusercontent.com/103487648/224491299-5de27831-ed1e-48d6-ae17-105ada7f9733.png)
+
