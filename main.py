@@ -58,8 +58,16 @@ def restocks_stock(SKU):
   prices = driver.find_element(by=By.CLASS_NAME, value='select__size__list').text
   prices_replace = prices.replace(" ½", ".5")
   prices_replace2 = prices_replace.replace("Notify me", "OOS")
-  prices_replace3 = prices_replace2.replace(" €", "")
-  price_list = prices_replace3.split("\n")
+  prices_replace_n1 = prices_replace2.replace("Noch 1 auf Lager", "")
+  prices_replace_n2 = prices_replace_n1.replace("Noch 2 auf Lager", "")
+  prices_replace3 = prices_replace_n2.replace(" €", "")
+  price_list_dirty = prices_replace3.split("\n")
+
+  price_list = []
+
+  for element in price_list_dirty:
+      if element != "":
+          price_list.append(element)
 
   driver.quit
 
@@ -189,3 +197,28 @@ def hypeboost_url(SKU):
   for a in soup.find_all('a', href=True):
     print('Scraped product url!')
     return a['href']
+
+def product_goat(SKU):
+  url = "https://ac.cnstrc.com/search/" + SKU
+  querystring = {"c":"ciojs-client-2.29.12","key":"key_XT7bjdbvjgECO5d8","i":"f8b0a5f2-bc6b-4626-b980-74bbc3b45edf","s":"1","num_results_per_page":"25","_dt":"1678011980760"}
+
+  payload = ""
+  headers = {
+      "authority": "ac.cnstrc.com",
+      "accept": "*/*",
+      "accept-language": "en-DE,en;q=0.9",
+      "origin": "https://www.goat.com",
+      "sec-ch-ua": "^\^Chromium^^;v=^\^110^^, ^\^Not",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "^\^Windows^^",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+  }
+
+  response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+  output = json.loads(response.text)
+  output_slug = output['response']['results'][0]['data']['slug']
+  product_url = "https://www.goat.com/sneakers/" + output_slug
+  return product_url
