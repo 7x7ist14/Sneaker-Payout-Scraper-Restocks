@@ -3,15 +3,14 @@ A Scraper that sends you every payout price for all sizes of a sneaker on Restoc
 
 
 # Requirements:
-1. Check if you have all the needed Python libraries.
 
-+ requests (pip install requests)
-+ json (pip install json)
-+ BeautifulSoup (pip install beautifulsoup4)
-+ Discord (pip install discord.py)
-+ selenium (pip install selenium)
+Check if you have all the needed Python libraries.
 
---> to install them just write the pip install... command in your Terminal.
+-->To install all needed libraries just do this:
++ open the folder that contains all files (the folder name should be "Sneaker-Payout-Scraper-Restocks") in your file Explorer.
++ click on the path and write "cmd" --> now press enter
++ you should now see a cmd window, you just have to type "pip install -r requirements.txt" 
++ all needed libraries should now be installed and your good to go :)
 
 # Chrome Driver
 Please Check that you have the same version of the chrome driver in the folder with the scraper files as your main chrome is!
