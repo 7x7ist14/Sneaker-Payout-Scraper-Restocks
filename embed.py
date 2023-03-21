@@ -10,7 +10,7 @@ stockx_url = main.stockx_url
 hypeboost_url = main.hypeboost_product_url
 sneakit_url = main.sneakit_product_url
 goat_url = main.product_goat
-product_picture = main.sneakit_image
+product_picture = main.restocks_product_img
 product_title = main.product_title
 
 
@@ -51,7 +51,7 @@ async def on_message(message):
         hypeboost_url_output = hypeboost_url(SKU)
         stockx_url_output = stockx_url(SKU)
         sneakit_url_output = sneakit_url(SKU)
-        product_picture_output = product_picture(SKU)
+        product_picture_output = product_picture(SKU,restocks_url)
         product_title_output = product_title(SKU)
         goat_url_output = goat_url(SKU)
 
