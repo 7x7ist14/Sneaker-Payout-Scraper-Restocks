@@ -197,12 +197,14 @@ def sneakit_info(SKU):
   except:
     return ("error")
 
-def sneakit_image(SKU):
+def restocks_product_img(SKU,restocks_url):
   try:
-    raw = sneakit_info(SKU)
-    image = raw['data'][0]['productable']['preview_img_public_url']
-    #print(image)
-    print("Scraped Image!")
+    product_url = restocks_url(SKU)
+    r = requests.get(product_url)
+    soup = BeautifulSoup(r.content, 'html.parser')
+    picture = soup.find("div", class_ = "swiper-wrapper")
+    image = picture.find_all('img')[0].get('src')
+    print('Scraped Product picture!')
     return image
   except:
     return ("https://www.freecodecamp.org/news/content/images/2021/03/ykhg3yuzq8931--1-.png")
