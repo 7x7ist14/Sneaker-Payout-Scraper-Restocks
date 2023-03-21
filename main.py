@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import cloudscraper
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -188,8 +189,9 @@ def sneakit_product_url(SKU):
 
 def sneakit_info(SKU):
   try:
+    scraper = cloudscraper.create_scraper()
     sneakit_url_r = sneakit_url(SKU)
-    r = requests.get(sneakit_url_r)
+    r = scraper.get(sneakit_url_r)
     global output
     output = json.loads(r.text)
     print("Scraped Sneakit info!")
