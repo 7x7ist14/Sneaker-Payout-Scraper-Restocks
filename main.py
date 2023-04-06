@@ -23,16 +23,6 @@ def restocks_url(SKU):
   except:
     return ("https://restocks.net/de")
 
-def format_list(price_list):
-    result = ""
-    for i in range(len(price_list)):
-        if i % 2 == 0:
-            result += price_list[i] + ": "
-        else:
-            result += price_list[i]
-            if i < len(price_list) - 1 and price_list[i+1] != "":
-                result += "\n"
-    return result
 
 def restocks_stock(SKU):
   try:
@@ -97,11 +87,19 @@ def restocks_stock(SKU):
             new_lst3.append(item)
 
 
-    formatted_list = format_list(new_lst3)
-
-    return formatted_list
+    result = ""
+    for i in range(len(new_lst3)):
+        if i % 2 == 0:
+            result += new_lst3[i] + ": "
+        else:
+            result += new_lst3[i]
+            if i < len(new_lst3) - 1 and new_lst3[i+1] != "":
+                result += "\n"
+    return result
   except:
     return ("Product not found!")
+
+
 
 def product_title(SKU):
   try:
